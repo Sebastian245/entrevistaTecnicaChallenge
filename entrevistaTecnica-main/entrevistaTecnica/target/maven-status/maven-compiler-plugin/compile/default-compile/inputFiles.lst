@@ -1,0 +1,17 @@
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/services/UsuarioService.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/services/AlertaService.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/controllers/UsuarioController.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/DTO/DTOSuscripcionTema.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/entities/TipoAlerta.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/entities/Usuario.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/services/AlertaServiceImpl.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/DTO/DTONotificaciones.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/CientificoApplication.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/DTO/DTOAlerta.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/services/UsuarioServiceImpl.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/entities/Alerta.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/DTO/DTOUsuario.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/entities/Mensaje.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/DTO/DTOTema.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/entities/Tema.java
+/home/sebastian/Escritorio/entrevistaTecnica-main/cientifico/src/main/java/com/proyectoCientifico/cientifico/controllers/AlertaController.java
