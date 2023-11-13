@@ -61,13 +61,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         throw new Exception("El tema no existe");
     }
 
-    @Override
-    public String consultarSuscripciones(DTOAlerta dtoAlerta) throws Exception {
-        return null;
-    }
-
     public Usuario buscarUsuarioPorNombre(String nombreUsuario) {
-        System.out.println(nombreUsuario);
         for (Usuario usuario : usuarios) {
             if (usuario.getNombreUsuario().equals(nombreUsuario)) {
                 return usuario;
@@ -137,7 +131,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public String marcarNotificacionLeida(DTOLong idNotificacion, DTOTexto nombreUsuario) {
-        System.out.println(nombreUsuario);
+        
         NotificacionUsuario notificacion = buscarNotificacionPorIdYUsuario(idNotificacion.getId(),
                 nombreUsuario.getCadena());
         if (notificacion != null) {

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proyecto.proyecto.DTO.DTOAlerta;
 import com.proyecto.proyecto.DTO.DTOLong;
 import com.proyecto.proyecto.DTO.DTONotificaciones;
 import com.proyecto.proyecto.DTO.DTOSuscripcionTema;
@@ -33,17 +32,6 @@ public class UsuarioController {
         }
     }
 
-
-    @GetMapping("/consultarSuscripciones")
-    public String consultarSuscripciones(@RequestBody DTOAlerta dtoAlerta) {
-        try {
-            return usuarioService.consultarSuscripciones(dtoAlerta);
-        } catch (IllegalArgumentException e) {
-            return "Error: " + e.getMessage();
-        } catch (Exception e) {
-            return "Error inesperado: " + e.getMessage();
-        }
-    }
     @GetMapping("/listarNotificacionesUsuario")
     public List<DTONotificaciones> listarNotificacionesUsuario(@RequestBody DTOTexto nombreUsuario) {
             return usuarioService.listarNotificacionesUsuario(nombreUsuario);

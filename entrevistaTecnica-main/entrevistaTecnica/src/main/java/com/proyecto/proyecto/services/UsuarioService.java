@@ -13,8 +13,6 @@ public interface UsuarioService {
 
     String suscripcionTema(DTOSuscripcionTema dtoSuscripcionTema) throws Exception;
 
-    String consultarSuscripciones(DTOAlerta dtoAlerta) throws Exception;
-
     String registrarUsuario(DTOUsuario dtoUsuario) throws Exception;
 
     List<DTONotificaciones> listarNotificacionesUsuario(DTOTexto nombreUsuario);
