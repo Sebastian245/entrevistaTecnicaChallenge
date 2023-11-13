@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TipoAlerta {
- private Long idTipoAlerta;
- private String nombreTipoAlerta;
+    public static final TipoAlerta URGENTE = new TipoAlerta(1L, "URGENTE");
+    public static final TipoAlerta INFORMATIVA = new TipoAlerta(2L, "INFORMATIVA");
+    private Long idTipoAlerta;
+    private String nombreTipoAlerta;
 }

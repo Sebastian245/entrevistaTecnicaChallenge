@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.proyecto.DTO.DTOAlerta;
@@ -49,9 +50,9 @@ public class UsuarioController {
     }
    
     @PostMapping("/marcarAlertaLeida")
-    public String marcarNotificacionLeida(@RequestBody DTOLong idNotificacion) {
+    public String marcarNotificacionLeida(@RequestBody DTOLong idNotificacion,@RequestParam DTOTexto nombreUsuario) {
         try {
-            return usuarioService.marcarNotificacionLeida(idNotificacion);
+            return usuarioService.marcarNotificacionLeida(idNotificacion,nombreUsuario);
         } catch (IllegalArgumentException e) {
             return "Error: " + e.getMessage();
         } catch (Exception e) {

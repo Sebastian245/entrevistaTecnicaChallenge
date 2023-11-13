@@ -11,7 +11,6 @@ public class DTOAlerta {
     private Long idAlerta;
     private String nombreAlerta;
     private String nombreTema;
-    private String descripcionTema;
     private String nombreTipoAlerta;
     private String nombreUsuario;
     private boolean esDirigidaParaTodos;

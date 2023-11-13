@@ -11,7 +11,6 @@ import com.proyecto.proyecto.entities.Tema;
 @Service
 public class TemaServiceImpl implements TemaService {
     List<Tema> listaTemas = new ArrayList<Tema>();
-
     @Override
     public String crearTema(DTOTema dtoTema) throws Exception {
         if (dtoTema.getNombreTema() == null) {
@@ -21,8 +20,6 @@ public class TemaServiceImpl implements TemaService {
             throw new Exception("La descripción del tema no puede ser vacia");
         }
         for (Tema tema : listaTemas) {
-            System.out.println(tema.getNombreTema());
-            System.out.println(dtoTema.getNombreTema());
             if (tema.getNombreTema().equals(dtoTema.getNombreTema())) {
                 throw new Exception("El tema ya existe");
             }
@@ -32,7 +29,6 @@ public class TemaServiceImpl implements TemaService {
         temaCrear.setNombreTema(dtoTema.getNombreTema());
         temaCrear.setDescripcionTema(dtoTema.getDescripcionTema());
         listaTemas.add(temaCrear);
-        System.out.println(listaTemas);
         return "Tema creado con éxito";
     }
 

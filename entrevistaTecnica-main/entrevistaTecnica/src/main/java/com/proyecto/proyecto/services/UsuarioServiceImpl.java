@@ -16,6 +16,7 @@ import com.proyecto.proyecto.DTO.DTOUsuario;
 import com.proyecto.proyecto.entities.Alerta;
 import com.proyecto.proyecto.entities.NotificacionUsuario;
 import com.proyecto.proyecto.entities.Tema;
+import com.proyecto.proyecto.entities.TipoAlerta;
 import com.proyecto.proyecto.entities.Usuario;
 
 @Service
@@ -98,50 +99,66 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public List<DTONotificaciones> listarNotificacionesUsuario(DTOTexto nombreUsuario) {
-        
+
         Usuario usuario = buscarUsuarioPorNombre(nombreUsuario.getCadena());
         List<DTONotificaciones> notificaciones = new ArrayList<>();
 
         if (usuario != null) {
+            List<DTONotificaciones> notificacionesUrgentes = new ArrayList<>();
+            List<DTONotificaciones> notificacionesInformativas = new ArrayList<>();
+
             for (Alerta alerta : alertaServiceImpl.getListaAlertas()) {
-                if (alerta.getUsuarios().contains(usuario)) {
+                if (alerta.getUsuarios().contains(usuario) && alerta.getFechaHoraFinVigenciaAlerta() == null) {
                     for (NotificacionUsuario notificacion : alerta.getNotificaciones()) {
                         if (!(notificacion.isLeida())) {
                             DTONotificaciones dtoNotificacion = new DTONotificaciones();
                             dtoNotificacion.setIdNotificacion(notificacion.getIdNotificacion());
                             dtoNotificacion.setNombreAlerta(alerta.getNombreAlerta());
                             dtoNotificacion.setNombreTema(alerta.getTema().getNombreTema());
-                            notificaciones.add(dtoNotificacion);
+                            // Comparar usando equals para evitar problemas con distintas instancias
+                            if (TipoAlerta.URGENTE.equals(alerta.getTipoAlerta())) {
+                                notificacionesUrgentes.add(dtoNotificacion); // Agregar a la lista de urgentes
+                            } else {
+                                notificacionesInformativas.add(dtoNotificacion); // Agregar a la lista de informativas
+                            }
                         }
                     }
-
                 }
             }
+
+            // Agregar las notificaciones urgentes primero
+            notificaciones.addAll(notificacionesUrgentes);
+            // Luego, agregar las notificaciones informativas
+            notificaciones.addAll(notificacionesInformativas);
         }
 
         return notificaciones;
     }
 
     @Override
-    public String marcarNotificacionLeida(DTOLong idNotificacion) {
-        System.out.println(idNotificacion.getId());
-        NotificacionUsuario notificacion = buscarNotificacionPorId(idNotificacion.getId());
+    public String marcarNotificacionLeida(DTOLong idNotificacion, DTOTexto nombreUsuario) {
+        System.out.println(nombreUsuario);
+        NotificacionUsuario notificacion = buscarNotificacionPorIdYUsuario(idNotificacion.getId(),
+                nombreUsuario.getCadena());
         if (notificacion != null) {
             notificacion.setLeida(true);
             return "Notificación marcada como leída con éxito";
         } else {
-            return "No se encontró la notificación con el ID proporcionado";
+            return "No se encontró la notificación con el ID y nombre de usuario proporcionados";
         }
     }
 
-    private NotificacionUsuario buscarNotificacionPorId(Long idNotificacion) {
+    private NotificacionUsuario buscarNotificacionPorIdYUsuario(Long idNotificacion, String nombreUsuario) {
         for (Alerta alerta : alertaServiceImpl.getListaAlertas()) {
             for (NotificacionUsuario notificacion : alerta.getNotificaciones()) {
-                if (notificacion.getIdNotificacion().equals(idNotificacion)) {
+                if (notificacion.getIdNotificacion().equals(idNotificacion)
+                        && notificacion.getUsuario().getNombreUsuario().equalsIgnoreCase(nombreUsuario)) {
                     return notificacion;
                 }
             }
         }
         return null;
     }
+    
+
 }

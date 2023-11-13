@@ -19,6 +19,6 @@ public interface UsuarioService {
 
     List<DTONotificaciones> listarNotificacionesUsuario(DTOTexto nombreUsuario);
 
-    String marcarNotificacionLeida(DTOLong idNotificacion);
+    String marcarNotificacionLeida(DTOLong idNotificacion, DTOTexto nombreUsuario);
     
 }
